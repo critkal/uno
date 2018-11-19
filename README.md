@@ -1,3 +1,6 @@
+# Project Forked from tk-codes/uno
+Here we will add JML specification for this game.
+
 # UNO - Card Game
 Java Swing Application
 
@@ -10,4 +13,3 @@ Available game modes
 
 ## Class Diagram
 ![UML](https://github.com/tk-codes/uno/blob/master/src/UML%202.png)
-
