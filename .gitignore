@@ -1,1 +1,8 @@
 /bin/
+
+# Compiled class file
+*.class
+
+# JML build files
+*.aj
+/bin/
