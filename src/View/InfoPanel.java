@@ -9,13 +9,13 @@ import javax.swing.JPanel;
 
 public class InfoPanel extends JPanel {
 	
-	private String error;
-	private String text;
-	private int panelCenter;
+	private /*@ spec_public@*/String error;
+	private /*@ spec_public @*/String text;
+	private /*@ spec_public nullable@*/int panelCenter;
 	
-	private int you = 0;
-	private int pc = 0;
-	private int rest = 0;
+	private /*@ spec_public @*/int you = 0;
+	private /*@ spec_public @*/int pc = 0;
+	private /*@ spec_public @*/int rest = 0;
 	
 	public InfoPanel(){
 		setPreferredSize(new Dimension(275,200));

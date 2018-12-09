@@ -18,12 +18,14 @@ import Interfaces.UNOConstants;
 
 public abstract class UNOCard extends JPanel implements CardInterface, UNOConstants {
 	
-	private Color cardColor = null;
-	private String value = null;
-	private int type = 0;
+	//@ public initially cardColor != null;
+	private /*@ spec_public nullable @*/Color cardColor;
 	
-	private Border defaultBorder = BorderFactory.createEtchedBorder(WHEN_FOCUSED, Color.white, Color.gray);
-	private Border focusedBorder = BorderFactory.createEtchedBorder(WHEN_FOCUSED, Color.black, Color.gray);
+	//@ public initially value != null;
+	private /*@ spec_public nullable @*/String value;
+	private /*@ spec_public @*/int type = 0;
+	private /*@ spec_public @*/Border defaultBorder = BorderFactory.createEtchedBorder(WHEN_FOCUSED, Color.white, Color.gray);
+	private /*@ spec_public @*/Border focusedBorder = BorderFactory.createEtchedBorder(WHEN_FOCUSED, Color.black, Color.gray);
 	
 	public UNOCard(){
 	}

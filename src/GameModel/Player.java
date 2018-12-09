@@ -5,80 +5,98 @@ import java.util.LinkedList;
 import View.UNOCard;
 
 public class Player {
-	
-	private String name = null;
-	private boolean isMyTurn = false;
-	private boolean saidUNO = false;
-	private LinkedList<UNOCard> myCards;
-	
-	private int playedCards = 0;
-	
+
+	//@ public initially name != null;
+	private /*@ spec_public nullable @*/ String name;
+	private /*@ spec_public @*/ boolean isMyTurn = false;
+	private /*@ spec_public @*/ boolean saidUNO = false;
+
+	//@ public initially myCards != null;
+	private /*@ spec_public nullable @*/ LinkedList<UNOCard> myCards;
+
+	//@ public invariant playedCards >= 0;
+	private /*@ spec_public @*/ int playedCards = 0;
+
 	public Player(){
-		myCards = new LinkedList<UNOCard>();
+		myCards = new LinkedList<>();
 	}
-	
-	public Player(String player){
+
+	public Player(/*@ non_null @*/ String player){
 		setName(player);
-		myCards = new LinkedList<UNOCard>();
+		myCards = new LinkedList<>();
 	}
-	
-	public void setName(String newName){
+
+	public void setName(/*@ non_null @*/ String newName){
 		name = newName;
 	}
-	
-	public String getName(){
+
+	public /*@ pure @*/ String getName(){
 		return this.name;
 	}
-	public void obtainCard(UNOCard card){
+
+	public void obtainCard(/*@ non_null @*/ UNOCard card){
 		myCards.add(card);
 	}
-	
-	public LinkedList<UNOCard> getAllCards(){
+
+	public /*@ pure @*/ LinkedList<UNOCard> getAllCards(){
 		return myCards;
 	}
-	
-	public int getTotalCards(){
+
+	public /*@ pure @*/ int getTotalCards(){
 		return myCards.size();
 	}
-	
-	public boolean hasCard(UNOCard thisCard){
-		return myCards.contains(thisCard);		
+
+	public /*@ pure @*/ boolean hasCard(/*@ non_null @*/ UNOCard thisCard){
+		return myCards.contains(thisCard);
 	}
-	
-	public void removeCard(UNOCard thisCard){
+
+	public void removeCard(/*@ non_null @*/ UNOCard thisCard){
 		myCards.remove(thisCard);
 		playedCards++;
 	}
-	
-	public int totalPlayedCards(){
+
+	//@ ensures \result == playedCards;
+	public /*@ pure @*/ int totalPlayedCards(){
 		return playedCards;
 	}
-	
+
 	public void toggleTurn(){
 		isMyTurn = (isMyTurn) ? false : true;
 	}
-	
-	public boolean isMyTurn(){
+
+	//@ ensures \result == isMyTurn;
+	public /*@ pure @*/ boolean isMyTurn(){
 		return isMyTurn;
 	}
-	
-	public boolean hasCards(){
+
+	//@ ensures \result == myCards.size() > 0;
+	public /*@ pure @*/ boolean hasCards(){
 		return (myCards.isEmpty()) ? false : true;
 	}
-	
-	public boolean getSaidUNO(){
+
+	//@ ensures \result == saidUNO;
+	public /*@ pure @*/ boolean getSaidUNO(){
 		return saidUNO;
 	}
-	
+
+	/*@ assignable saidUNO;
+	  @ ensures saidUNO == true;
+	  @*/
 	public void saysUNO(){
 		saidUNO = true;
 	}
-	
+
+	/*@ assignable saidUNO;
+	  @ ensures saidUNO == false;
+	  @*/
 	public void setSaidUNOFalse(){
 		saidUNO = false;
 	}
-	
+
+	/*@ assignable myCards;
+	  @ ensures myCards != null && myCards.size() == 0;
+	  @*/
 	public void setCards(){
-		myCards = new LinkedList<UNOCard>();
+		myCards = new LinkedList<>();
 	}
 }

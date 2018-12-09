@@ -21,8 +21,8 @@ import Interfaces.UNOConstants;
 
 public class TablePanel extends JPanel implements GameConstants {
 	
-	private UNOCard topCard;	
-	private JPanel table;
+	private /*@ spec_public nullable @*/UNOCard topCard;	
+	private /*@ spec_public nullable @*/JPanel table;
 	
 	public TablePanel(UNOCard firstCard){
 		setOpaque(false);

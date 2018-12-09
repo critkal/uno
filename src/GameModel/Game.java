@@ -13,13 +13,13 @@ import View.UNOCard;
 
 public class Game implements GameConstants {
 
-	private Player[] players;
-	private boolean isOver;
-	private int GAMEMODE;
+	private /*@ spec_public nullable @*/Player[] players;
+	private /*@ spec_public nullable @*/boolean isOver;
+	private /*@ spec_public nullable @*/int GAMEMODE;
 	
-	private PC pc;
-	private Dealer dealer;
-	private Stack<UNOCard> cardStack;
+	private /*@ spec_public nullable @*/PC pc;
+	private /*@ spec_public nullable @*/Dealer dealer;
+	private /*@ spec_public nullable @*/Stack<UNOCard> cardStack;
 	
 	
 	public Game(int mode){

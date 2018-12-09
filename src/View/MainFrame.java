@@ -8,8 +8,8 @@ import ServerController.Server;
 
 public class MainFrame extends JFrame implements GameConstants {
 	
-	private Session mainPanel;
-	private Server server;
+	private /*@ spec_public nullable @*/Session mainPanel;
+	private /*@ spec_public nullable @*/Server server;
 	
 	public MainFrame(){	
 		server = new Server();
