@@ -1,13 +1,11 @@
 package GameModel;
 
-import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Stack;
 
 import CardModel.CardDeck;
 import Interfaces.GameConstants;
-import View.PlayerPanel;
 import View.UNOCard;
 
 public class Dealer implements GameConstants {

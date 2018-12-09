@@ -2,8 +2,6 @@ package Interfaces;
 
 import java.awt.Color;
 
-import javax.swing.JTextArea;
-
 import ServerController.MyButtonListener;
 import ServerController.MyCardListener;
 import View.InfoPanel;

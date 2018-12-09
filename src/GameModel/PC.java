@@ -1,11 +1,7 @@
 package GameModel;
 
-import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
-import java.util.LinkedList;
-
-import javax.sound.midi.Receiver;
 
 import CardModel.WildCard;
 import Interfaces.GameConstants;

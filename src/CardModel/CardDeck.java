@@ -12,19 +12,11 @@ import View.UNOCard;
  */
 public class CardDeck implements GameConstants {
 	
-	private final LinkedList<NumberCard> numberCards;
-	private final LinkedList<ActionCard> actionCards;
-	private final LinkedList<WildCard> wildCards;
-	
 	private LinkedList<UNOCard> UNOcards;
 	
 	public CardDeck(){
 		
 		//Initialize Cards
-		numberCards = new LinkedList<NumberCard>();
-		actionCards = new LinkedList<ActionCard>();
-		wildCards = new LinkedList<WildCard>();
-		
 		UNOcards = new LinkedList<UNOCard>();
 		
 		addCards();

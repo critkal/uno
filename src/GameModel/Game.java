@@ -1,13 +1,10 @@
 package GameModel;
 
-import java.awt.Color;
-import java.util.LinkedList;
-import java.util.Random;
 import java.util.Stack;
 
 import javax.swing.JOptionPane;
 
-import CardModel.*;
+import CardModel.WildCard;
 import Interfaces.GameConstants;
 import View.UNOCard;
 
