@@ -116,15 +116,15 @@ public class InfoPanel extends JPanel {
 	}
 
 	/*@ assignable text;
-	 @ ensures text == newText;
-	 @*/
+	@ ensures text == newText;
+	@*/
 	public void updateText(String newText) {
 		text = newText;
 	}
 	
 	/*@ assignable error;
-	 @ ensures error == errorMgs;
-	 @*/
+	@ ensures error == errorMgs;
+	@*/
 	public void setError(String errorMgs){
 		error = errorMgs;
 	}

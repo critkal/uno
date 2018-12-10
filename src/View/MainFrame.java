@@ -7,11 +7,9 @@ import ServerController.Server;
 
 
 public class MainFrame extends JFrame implements GameConstants {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
+	/*@initially mainPanel != null
+	@*/
 	private /*@ spec_public nullable @*/Session mainPanel;
 	private /*@ spec_public nullable @*/Server server;
 	

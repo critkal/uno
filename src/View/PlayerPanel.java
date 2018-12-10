@@ -123,6 +123,11 @@ public class PlayerPanel extends JPanel implements GameConstants {
 		}
 	}
 
+	/*@ requires totalCards >= 8 || totalCards < 8;
+	@ assignable p;
+	@ ensures \result != null;
+	@ ensures \result == p;
+	@*/
 	private Point getPoint(int width, int totalCards) {
 		Point p = new Point(0, 20);
 		if (totalCards >= 8) {
