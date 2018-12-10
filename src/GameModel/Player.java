@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import View.UNOCard;
 
 public class Player {
-
+	//@ public constraint \old(name) == name;
 	//@ public initially name != null;
 	private /*@ spec_public nullable @*/ String name;
 	private /*@ spec_public @*/ boolean isMyTurn = false;
@@ -34,22 +34,44 @@ public class Player {
 		return this.name;
 	}
 
+	/*@ requires card != null;
+	  @ requires myCards != null;
+	  @ assignable myCards;
+	  @ ensures myCards.size() == \old(myCards.size()) + 1;
+	  @ ensures myCards.get(myCards.size() - 1) == card;
+	  @ ensures (\forall int i; 0 <= i && i < myCards.size() - 1;
+	  @ 	myCards.get(i) == \old(myCards).get(i));
+	  @*/
 	public void obtainCard(/*@ non_null @*/ UNOCard card){
 		myCards.add(card);
 	}
 
+	/*@ ensures \result == myCards; 
+	 @*/
 	public /*@ pure @*/ LinkedList<UNOCard> getAllCards(){
 		return myCards;
 	}
 
+	/*@ ensures \result == myCards.size(); 
+	 @*/
 	public /*@ pure @*/ int getTotalCards(){
 		return myCards.size();
 	}
 
+	/*@ requires thisCard != null;
+	  @ ensures \result == true || \result == false;
+	  @ ensures \result == (\exists int i; 0 <= i && i < myCards.size();
+	  @ 		myCards.get(i) == thisCard);
+	 @*/
 	public /*@ pure @*/ boolean hasCard(/*@ non_null @*/ UNOCard thisCard){
 		return myCards.contains(thisCard);
 	}
 
+	/*@ requires thisCard != null;
+	  @ assignable myCards, playedCards;
+	  @ ensures playedCards == \old(playedCards) + 1;
+	  @ ensures myCards.size() == \old(myCards.size()) - 1;
+	 @*/
 	public void removeCard(/*@ non_null @*/ UNOCard thisCard){
 		myCards.remove(thisCard);
 		playedCards++;
@@ -60,6 +82,10 @@ public class Player {
 		return playedCards;
 	}
 
+	/*@ assignable isMyTurn;
+	  @ ensures \old(isMyTurn) == false <==> isMyTurn == true;
+	  @ ensures \old(isMyTurn) == true <==> isMyTurn == false;
+	 @*/
 	public void toggleTurn(){
 		isMyTurn = (isMyTurn) ? false : true;
 	}

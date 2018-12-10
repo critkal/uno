@@ -9,15 +9,22 @@ import View.UNOCard;
 
 public class PC extends Player implements GameConstants {
 
+	/*@ ensures this.name == "PC";
+	  @*/
 	public PC() {
 		setName("PC");
 		super.setCards();
 	}
 
+	/*@ requires player != null;
+	  @*/
 	public PC(Player player) {
 	}
 	
 	//PC plays a card
+	/*@ requires topCard != null;
+	  @ ensures \result == true || \result == false;
+	  @*/
 	public boolean play(UNOCard topCard) {
 
 		boolean done = false;

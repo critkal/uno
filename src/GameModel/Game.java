@@ -10,7 +10,7 @@ import View.UNOCard;
 
 public class Game implements GameConstants {
 	/*@ public initially players != null;
-	  @ public invariant players.length >= 1;
+	  @ public invariant players.length >= 2;
 	  @ public invariant (\exists int i; 0 <= i && i < players.length;
 	  @ 	players[i].isMyTurn());
 	  @ public constraint (\forall int i; 0 <= i && i < players.length;
@@ -19,7 +19,7 @@ public class Game implements GameConstants {
 	private /*@ spec_public nullable @*/ Player[] players;
 	
 	/*@ public initially isOver == false;
-	  @ public invariant (isOver == true) ==> (\exists int i; 0 <= i && i < players.length;
+	  @ public invariant (isOver == true) <==> (\exists int i; 0 <= i && i < players.length;
 	  @ 	players[i].getTotalCards() == 0);
 	  @*/
 	private /*@ spec_public nullable @*/ boolean isOver;
