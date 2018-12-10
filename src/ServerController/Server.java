@@ -89,10 +89,10 @@ public class Server implements GameConstants {
 	}
 	
 	//return Main Panel
-
 	/*@ requires session != null;
-	 @ ensures \result == session;
-	 @*/
+	@ pure
+	@ ensures \result == session;
+	@*/
 	public Session getSession() {
 		return this.session;
 	}

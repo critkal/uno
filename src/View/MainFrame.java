@@ -8,11 +8,19 @@ import ServerController.Server;
 
 public class MainFrame extends JFrame implements GameConstants {
 
-	/*@initially mainPanel != null
+	/*@initially mainPanel != null;
+	@ invariant mainPanel != null;
 	@*/
 	private /*@ spec_public nullable @*/Session mainPanel;
+
+	/*@initially server != null;
+	@ invariant server != null;
+	@*/
 	private /*@ spec_public nullable @*/Server server;
 	
+	/*@ requires server != null;
+	@ assignable mainPanel;
+	@*/
 	public MainFrame(){	
 		server = new Server();
 		CARDLISTENER.setServer(server);

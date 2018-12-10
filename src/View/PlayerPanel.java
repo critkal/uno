@@ -76,15 +76,27 @@ public class PlayerPanel extends JPanel implements GameConstants {
 		repaint();
 	}
 
+	/*@ pure
+	@ ensures \result == player;
+	@*/
 	public Player getPlayer() {
 		return player;
 	}
 
+	/*@ requires player != null;
+	@ assignable this.player;
+	@ ensures this.player == player;
+	@*/
 	public void setPlayer(Player player) {
 		this.player = player;
 		setPlayerName(player.getName());
 	}
 
+	/*@ requires playername.lenght >= 0;
+	@ requires player != null;
+	@ assignable name;
+	@ ensures name == playerName;
+	@*/
 	public void setPlayerName(String playername) {
 		this.name = playername;
 	}
@@ -113,6 +125,10 @@ public class PlayerPanel extends JPanel implements GameConstants {
 		controlPanel.add(sayUNO);
 	}
 
+	/*@ requires width != null && totalCards != null;
+	@ requires totalCards <= 8 || totalCards > 8;
+	@ ensures total cards <= 8 ==> \result == 71; 
+	@*/
 	private int calculateOffset(int width, int totalCards) {
 		int offset = 71;
 		if (totalCards <= 8) {
