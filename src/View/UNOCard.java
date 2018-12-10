@@ -18,11 +18,6 @@ import Interfaces.UNOConstants;
 
 public abstract class UNOCard extends JPanel implements CardInterface, UNOConstants {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1052738771736790919L;
-
 	//@ public initially cardColor != null;
 	private /*@ spec_public nullable @*/Color cardColor;
 	
@@ -102,14 +97,19 @@ public abstract class UNOCard extends JPanel implements CardInterface, UNOConsta
 		}
 	}
 	
+
 	public void setCardSize(Dimension newSize){
 		this.setPreferredSize(newSize);
 	}
 	
+	/*@ assignable cardColor;
+	 @ ensures cardColor == newColor;
+	 @*/
 	public void setColor(Color newColor) {
 		this.cardColor = newColor;
 	}
 
+	//@ pure
 	public Color getColor() {
 		return cardColor;
 	}
@@ -120,6 +120,7 @@ public abstract class UNOCard extends JPanel implements CardInterface, UNOConsta
 	}
 
 	@Override
+	//@ pure
 	public String getValue() {
 		return value;
 	}
@@ -130,6 +131,7 @@ public abstract class UNOCard extends JPanel implements CardInterface, UNOConsta
 	}
 
 	@Override
+	//@ pure
 	public int getType() {
 		return type;
 	}

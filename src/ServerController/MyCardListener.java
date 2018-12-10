@@ -10,6 +10,10 @@ public class MyCardListener extends MouseAdapter {
 	private /*@ spec_public nullable @*/ UNOCard sourceCard;
 	private /*@ spec_public nullable @*/ Server myServer;
 	
+	/*@ requires server != null;
+	 @ assignable server;
+	 @ ensures myServer == server;
+	 @*/
 	public void setServer(Server server){
 		myServer = server;
 	}

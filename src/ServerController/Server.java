@@ -15,7 +15,13 @@ import View.Session;
 import View.UNOCard;
 
 public class Server implements GameConstants {
+	
+	/*@ public initially game != null;
+	 @*/
 	private /*@ spec_public nullable @*/Game game;
+	
+	/*@ public initially session != null;
+	 @*/
 	private /*@ spec_public nullable @*/Session session;
 	private /*@ spec_public nullable @*/Stack<UNOCard> playedCards;
 	/*@ public constraint (\old(canPlay) == false) ==> canPlay == false;
@@ -41,6 +47,8 @@ public class Server implements GameConstants {
 	}
 
 	//return if it's 2-Player's mode or PC-mode
+	/*@ assignable \nothing;
+	 @*/
 	private int requestMode() {
 
 		Object[] options = { "vs PC", "Manual", "Cancel" };
@@ -57,6 +65,10 @@ public class Server implements GameConstants {
 	}
 	
 	//coustom settings for the first card
+	/*@ requires firstCard.getType() == WILD;
+	 @ assignable \nothing;
+	 @ ensures \old(firstCard) == firstCard;
+	 @*/
 	private void modifyFirstCard(UNOCard firstCard) {
 		firstCard.removeMouseListener(CARDLISTENER);
 		if (firstCard.getType() == WILD) {
@@ -69,6 +81,9 @@ public class Server implements GameConstants {
 		}
 	}
 	
+	/*@ requires session != null;
+	 @ ensures \result == session;
+	 @*/
 	//return Main Panel
 	public Session getSession() {
 		return this.session;
@@ -121,8 +136,11 @@ public class Server implements GameConstants {
 			}
 		}
 	}
-
+	
 	//Check if the game is over
+	/*@ requires game != null;
+	 @ assignable canPlay;
+	 @*/
 	private void checkResults() {
 
 		if (game.isOver()) {
@@ -132,6 +150,10 @@ public class Server implements GameConstants {
 	}
 	
 	//check player's turn
+	/*@ requires game != null;
+	  @ ensures \result == true <==> (\exists int i; 0 <= i && i < game.players.length;
+	  @ 	game.players[i].hasCard(clickedCard) && game.players[i].isMyTurn());
+	  @*/
 	public boolean isHisTurn(UNOCard clickedCard) {
 
 		for (Player p : game.getPlayers()) {
@@ -172,6 +194,9 @@ public class Server implements GameConstants {
 			game.switchTurn();
 	}
 
+	/*@	requires game != null;
+	 @	assignable game, mode;
+	 @*/
 	private void performWild(WildCard functionCard) {		
 
 		//System.out.println(game.whoseTurn());
@@ -198,6 +223,9 @@ public class Server implements GameConstants {
 			game.drawPlus(4);
 	}
 	
+	/*@ requires game != null;
+	 @ assignable game;
+	 @*/
 	public void requestCard() {
 		game.drawCard(peekTopCard());
 		
@@ -208,11 +236,17 @@ public class Server implements GameConstants {
 		
 		session.refreshPanel();
 	}
-
+	
+	/*@ requires playedCards != null;
+	 @ ensures \result == playedCards.peek();
+	 @*/
 	public UNOCard peekTopCard() {
 		return playedCards.peek();
 	}
 
+	/*@ requires game != null;
+	 @ assignable game;
+	 @*/
 	public void submitSaidUNO() {
 		game.setSaidUNO();
 	}

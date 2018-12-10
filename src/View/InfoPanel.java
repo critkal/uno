@@ -9,13 +9,31 @@ import javax.swing.JPanel;
 
 public class InfoPanel extends JPanel {
 	
+	/*@ public initially error.equals("");
+	 @*/
 	private /*@ spec_public@*/String error;
+	
+	/*@ public initially text.equals("Game Started");
+	 @*/
 	private /*@ spec_public @*/String text;
 	private /*@ spec_public nullable@*/int panelCenter;
 	
+	/*@ public initially you == 0;
+	 @ public invariant you >= 0;	 
+	  @*/
 	private /*@ spec_public @*/int you = 0;
+	
+	/*@ public initially pc == 0;
+	 @ public invariant pc >= 0;	 
+	 @*/
 	private /*@ spec_public @*/int pc = 0;
+	
+	/*@ public initially you == 0;
+	 @ public invariant pc >= 0;	 
+	 @*/
 	private /*@ spec_public @*/int rest = 0;
+	
+	
 	
 	public InfoPanel(){
 		setPreferredSize(new Dimension(275,200));
@@ -26,6 +44,9 @@ public class InfoPanel extends JPanel {
 		updateText(text);
 	}
 	
+	/*@ requires g != null;
+	 @ assignable panelCenter;
+	 @*/
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		panelCenter = getWidth()/2;
@@ -35,6 +56,7 @@ public class InfoPanel extends JPanel {
 		printDetail(g);
 	}
 
+	//@ requires g!= null;
 	private void printError(Graphics g) {
 		if(!error.isEmpty()){
 			Font adjustedFont = new Font("Calibri", Font.PLAIN,	25);
@@ -93,14 +115,23 @@ public class InfoPanel extends JPanel {
 		//g.drawString(text, xPos, 190);
 	}
 
+	/*@ assignable text;
+	 @ ensures text == newText;
+	 @*/
 	public void updateText(String newText) {
 		text = newText;
 	}
 	
+	/*@ assignable error;
+	 @ ensures error == errorMgs;
+	 @*/
 	public void setError(String errorMgs){
 		error = errorMgs;
 	}
 	
+	/*@ assignable you, pc, rest;
+	@ ensures you == playedCards[1] && pc == playedCards[0] && rest == remaining;
+	@*/
 	public void setDetail(int[] playedCards, int remaining){
 		you = playedCards[1];
 		pc = playedCards[0];
