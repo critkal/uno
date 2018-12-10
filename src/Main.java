@@ -6,6 +6,9 @@ import View.MainFrame;
 /**
  * 0 lines
  * 0 methods
+ * 2035 lines including commented lines.
+ * 407 commented lines.
+ * 1628 without commented lines.
  */
 public class Main {
 	
