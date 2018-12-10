@@ -14,6 +14,10 @@ import Interfaces.GameConstants;
 import View.Session;
 import View.UNOCard;
 
+/**
+ * 42 lines
+ * 13 methods
+ */
 public class Server implements GameConstants {
 	
 	/*@ public initially game != null;
@@ -90,10 +94,9 @@ public class Server implements GameConstants {
 	
 	//return Main Panel
 	/*@ requires session != null;
-	@ pure
 	@ ensures \result == session;
 	@*/
-	public Session getSession() {
+	public /*@ pure @*/ Session getSession() {
 		return this.session;
 	}
 	

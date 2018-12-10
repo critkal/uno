@@ -5,7 +5,10 @@ import javax.swing.JFrame;
 import Interfaces.GameConstants;
 import ServerController.Server;
 
-
+/**
+ * 8 lines
+ * 1 method
+ */
 public class MainFrame extends JFrame implements GameConstants {
 
 	/*@initially mainPanel != null;

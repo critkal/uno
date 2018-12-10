@@ -1,6 +1,10 @@
 package Interfaces;
 import java.awt.Color;
 
+/**
+ * 23 lines
+ * 0 methods
+ */
 public interface UNOConstants {
 	
 	//Colors
@@ -53,6 +57,11 @@ public interface UNOConstants {
 	public static String DRAW2PLUS = "2+";
 	
 	//Wild card functions
+	//@ public constraint \old(W_COLORPICKER) == W_COLORPICKER;
+	//@ public invariant W_COLORPICKER.equals("W");
 	public static String W_COLORPICKER = "W";
+
+	//@ public constraint \old(W_DRAW4PLUS) == W_DRAW4PLUS;
+	//@ public invariant W_DRAW4PLUS.equals("4+");
 	public static String W_DRAW4PLUS = "4+";	
 }

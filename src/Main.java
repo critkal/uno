@@ -3,6 +3,10 @@ import javax.swing.SwingUtilities;
 
 import View.MainFrame;
 
+/**
+ * 0 lines
+ * 0 methods
+ */
 public class Main {
 	
 	public static void main(String[] args) {

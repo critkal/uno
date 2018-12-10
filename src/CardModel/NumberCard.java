@@ -2,7 +2,10 @@ package CardModel;
 import java.awt.Color;
 
 import View.UNOCard;
-
+/**
+ * 7 lines
+ * 1 method
+ */
 public class NumberCard extends UNOCard {
 
 	public NumberCard(){

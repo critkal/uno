@@ -7,6 +7,10 @@ import CardModel.WildCard;
 import Interfaces.GameConstants;
 import View.UNOCard;
 
+/**
+ * 4 lines
+ * 3 methods
+ */
 public class PC extends Player implements GameConstants {
 
 	/*@ ensures this.name == "PC";

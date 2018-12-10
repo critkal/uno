@@ -1,6 +1,10 @@
 package Interfaces;
 import java.awt.*;
 
+/**
+ * 32 lines
+ * 6 methods
+ */
 public interface CardInterface{
 	//@ public constraint \old(WIDTH) == WIDTH;
 	//@ public invariant WIDTH == 50;

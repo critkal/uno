@@ -16,6 +16,10 @@ import javax.swing.border.Border;
 import Interfaces.CardInterface;
 import Interfaces.UNOConstants;
 
+/**
+ * 11 lines
+ * 4 methods
+ */
 public abstract class UNOCard extends JPanel implements CardInterface, UNOConstants {
 	
 	//@ public initially cardColor != null;

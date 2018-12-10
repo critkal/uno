@@ -5,6 +5,10 @@ import java.awt.event.MouseEvent;
 
 import View.UNOCard;
 
+/**
+ * 24 lines
+ * 5 methods
+ */
 public class MyCardListener extends MouseAdapter {
 	
 	private /*@ spec_public nullable @*/ UNOCard sourceCard;

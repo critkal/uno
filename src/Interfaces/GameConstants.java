@@ -6,7 +6,10 @@ import ServerController.MyButtonListener;
 import ServerController.MyCardListener;
 import View.InfoPanel;
 
-
+/**
+ * 17 lines
+ * 0 methods
+ */
 public interface GameConstants extends UNOConstants {
 	//@ public invariant TOTAL_CARDS == 108;
 	//@ public constraint \old(TOTAL_CARDS) == TOTAL_CARDS;

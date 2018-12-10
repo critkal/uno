@@ -4,7 +4,10 @@ import java.awt.Color;
 
 import View.UNOCard;
 
-
+/**
+ * 14 lines
+ * 3 methods
+ */
 public class WildCard extends UNOCard {
 	private /*@ spec_public nullable @*/ Color chosenColor;
 	

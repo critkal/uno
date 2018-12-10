@@ -2,6 +2,10 @@ package ServerController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * 11 lines
+ * 4 methods
+ */
 public class MyButtonListener implements ActionListener {
 		
 	private /*@ spec_public @*/ Server myServer;

@@ -9,6 +9,10 @@ import javax.swing.JPanel;
 
 import GameModel.Game;
 
+/**
+ * 3 lines
+ * 0 methods
+ */
 public class Session extends JPanel {
 	private /*@ spec_public nullable @*/PlayerPanel player1;
 	private /*@ spec_public nullable @*/PlayerPanel player2;

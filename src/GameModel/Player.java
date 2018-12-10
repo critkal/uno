@@ -3,7 +3,10 @@ package GameModel;
 import java.util.LinkedList;
 
 import View.UNOCard;
-
+/**
+ * 50 lines
+ * 16 methods
+ */
 public class Player {
 	//@ public constraint \old(name) == name;
 	//@ public initially name != null;

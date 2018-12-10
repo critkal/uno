@@ -8,6 +8,10 @@ import CardModel.WildCard;
 import Interfaces.GameConstants;
 import View.UNOCard;
 
+/**
+ * 74 lines
+ * 15 methods
+ */
 public class Game implements GameConstants {
 	/*@ public initially players != null;
 	  @ public invariant players.length >= 2;

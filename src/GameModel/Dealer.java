@@ -7,7 +7,10 @@ import java.util.Stack;
 import CardModel.CardDeck;
 import Interfaces.GameConstants;
 import View.UNOCard;
-
+/**
+ * 21 lines
+ * 4 methods
+ */
 public class Dealer implements GameConstants {
 	//@ public initially cardDeck != null;
 	private /*@ spec_public nullable @*/CardDeck cardDeck;

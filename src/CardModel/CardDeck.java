@@ -9,6 +9,8 @@ import View.UNOCard;
 
 /**
  * This Class contains standard 108-Card stack
+ * 11 lines
+ * 4 methods
  */
 public class CardDeck implements GameConstants {
 	//@ public invariant UNOcards.size() <= 108 && UNOcards.size() >= 0;

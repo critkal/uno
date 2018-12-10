@@ -3,6 +3,10 @@ import java.awt.Color;
 
 import View.UNOCard;
 
+/**
+ * 7 lines
+ * 1 method
+ */
 public class ActionCard extends UNOCard{
 	//Constructor
 	public ActionCard(){

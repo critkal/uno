@@ -7,6 +7,10 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+/**
+ * 24 lines
+ * 7 methods
+ */
 public class InfoPanel extends JPanel {
 	
 	/*@ public initially error.equals("");

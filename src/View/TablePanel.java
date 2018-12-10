@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 import CardModel.WildCard;
 import Interfaces.GameConstants;
 
+/**
+ * 2 lines
+ * 0 methods
+ */
 public class TablePanel extends JPanel implements GameConstants {
 	
 	private /*@ spec_public nullable @*/UNOCard topCard;	

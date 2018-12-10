@@ -17,6 +17,10 @@ import GameModel.Player;
 import Interfaces.CardInterface;
 import Interfaces.GameConstants;
 
+/**
+ * 22 lines
+ * 5 methods
+ */
 public class PlayerPanel extends JPanel implements GameConstants {
 
 	private /*@ spec_public nullable @*/Player player;
@@ -76,10 +80,9 @@ public class PlayerPanel extends JPanel implements GameConstants {
 		repaint();
 	}
 
-	/*@ pure
-	@ ensures \result == player;
+	/*@ ensures \result == player;
 	@*/
-	public Player getPlayer() {
+	public /*@ pure @*/ Player getPlayer() {
 		return player;
 	}
 
@@ -92,10 +95,10 @@ public class PlayerPanel extends JPanel implements GameConstants {
 		setPlayerName(player.getName());
 	}
 
-	/*@ requires playername.lenght >= 0;
+	/*@ requires playername.size() >= 0;
 	@ requires player != null;
 	@ assignable name;
-	@ ensures name == playerName;
+	@ ensures name == playername;
 	@*/
 	public void setPlayerName(String playername) {
 		this.name = playername;
@@ -125,9 +128,8 @@ public class PlayerPanel extends JPanel implements GameConstants {
 		controlPanel.add(sayUNO);
 	}
 
-	/*@ requires width != null && totalCards != null;
-	@ requires totalCards <= 8 || totalCards > 8;
-	@ ensures total cards <= 8 ==> \result == 71; 
+	/*@ requires totalCards <= 8 || totalCards > 8;
+	@ ensures totalCards <= 8 ==> \result == 71; 
 	@*/
 	private int calculateOffset(int width, int totalCards) {
 		int offset = 71;
@@ -140,9 +142,7 @@ public class PlayerPanel extends JPanel implements GameConstants {
 	}
 
 	/*@ requires totalCards >= 8 || totalCards < 8;
-	@ assignable p;
 	@ ensures \result != null;
-	@ ensures \result == p;
 	@*/
 	private Point getPoint(int width, int totalCards) {
 		Point p = new Point(0, 20);
@@ -155,7 +155,6 @@ public class PlayerPanel extends JPanel implements GameConstants {
 	}
 	
 	class MyButtonHandler implements ActionListener{
-		
 		public void actionPerformed(ActionEvent e) {
 			
 			if(player.isMyTurn()){
