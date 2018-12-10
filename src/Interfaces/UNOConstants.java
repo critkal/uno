@@ -21,11 +21,11 @@ public interface UNOConstants {
 	Character charSKIP    = (char) Integer.parseInt("2718",16); 	//Unicode
 	
 	//ActionCard Functions
-	String REVERSE = charREVERSE.toString();
-	String SKIP	= charSKIP.toString();
-	String DRAW2PLUS = "2+";
+	public static String REVERSE = charREVERSE.toString();
+	public static String SKIP	= charSKIP.toString();
+	public static String DRAW2PLUS = "2+";
 	
 	//Wild card functions
-	String W_COLORPICKER = "W";
-	String W_DRAW4PLUS = "4+";	
+	public static String W_COLORPICKER = "W";
+	public static String W_DRAW4PLUS = "4+";	
 }

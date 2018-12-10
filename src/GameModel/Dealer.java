@@ -9,15 +9,24 @@ import Interfaces.GameConstants;
 import View.UNOCard;
 
 public class Dealer implements GameConstants {
-	
+	//@ public initially cardDeck != null;
 	private /*@ spec_public nullable @*/CardDeck cardDeck;
 	private /*@ spec_public nullable @*/Stack<UNOCard> CardStack;	
 	
+	/*@ ensures cardDeck != null;
+	  @*/
 	public Dealer(){
 		this.cardDeck = new CardDeck();
 	}
 	
 	//Shuffle cards
+	/*@ requires cardDeck != null;
+	  @ requires cardDeck.getCards().size() == Interfaces.GameConstants.TOTAL_CARDS;
+	  @ assignable cardDeck, CardStack;
+	  @ ensures CardStack.size() == \old(cardDeck.getCards().size());
+	  @ ensures cardDeck.getCards().size() == 0;
+	  @ ensures \result == CardStack;
+	  @*/
 	public Stack<UNOCard> shuffle(){
 		
 		LinkedList<UNOCard> DeckOfCards = cardDeck.getCards();
@@ -43,8 +52,17 @@ public class Dealer implements GameConstants {
 	}
 	
 	//Spread cards to players - 8 each
-	public void spreadOut(Player[] players){		
-		
+	/*@ requires CardStack != null;
+	  @ requires CardStack.size() == Interfaces.GameConstants.TOTAL_CARDS;
+	  @ requires players != null && players.length >= 2;
+	  @ assignable CardStack;
+	  @ ensures CardStack.size() == \old(CardStack.size()) - players.length * Interfaces.GameConstants.FIRSTHAND;
+	  @ ensures (\forall int i; 0 <= i && i < players.length; 
+	  @ 	players[i].getTotalCards() == Interfaces.GameConstants.FIRSTHAND);
+	  // ensures (\forall int i; 0 <= i && i < players.length;
+	  // 				((Stack) \old(CardStack)).containsAll(((LinkedList) players[i].getAllCards())));
+	  @*/
+	public void spreadOut(Player[] players) {
 		for(int i=1;i<=FIRSTHAND;i++){
 			for(Player p : players){
 				p.obtainCard(CardStack.pop());
@@ -52,6 +70,10 @@ public class Dealer implements GameConstants {
 		}		
 	}
 	
+	/*@ requires CardStack != null;
+	  @ assignable CardStack;
+	  @ ensures CardStack.size() == \old(CardStack.size()) - 1;
+	  @*/
 	public UNOCard getCard(){
 		return CardStack.pop();
 	}

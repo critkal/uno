@@ -11,9 +11,13 @@ import View.UNOCard;
  * This Class contains standard 108-Card stack
  */
 public class CardDeck implements GameConstants {
+	//@ public invariant UNOcards.size() <= 108 && UNOcards.size() >= 0;
 	
-	private LinkedList<UNOCard> UNOcards;
+	//@ public initially UNOcards != null && UNOcards.size() == 108;
+	private /*@ spec_public non_null @*/ LinkedList<UNOCard> UNOcards;
 	
+	/*@ ensures UNOcards.size() == 108;
+	@*/
 	public CardDeck(){
 		
 		//Initialize Cards
@@ -25,6 +29,11 @@ public class CardDeck implements GameConstants {
 	
 	
 	//Create 108 cards for this CardDeck
+	/*@ requires UNOcards != null;
+	  @ ensures UNOcards.size() == 108;
+	  @ ensures (\forall int i; 0 <= i && i < UNOcards.size(); 
+	  @ 	UNOcards.get(i) instanceof NumberCard || UNOcards.get(i) instanceof ActionCard || UNOcards.get(i) instanceof WildCard);
+	  @*/
 	private void addCards() {
 		for(Color color:UNO_COLORS){
 			
@@ -53,12 +62,16 @@ public class CardDeck implements GameConstants {
 	}
 	
 	//Cards have MouseListener
+	/*@ requires listener != null;
+	  @*/
 	public void addCardListener(MyCardListener listener){
 		for(UNOCard card: UNOcards)
-		card.addMouseListener(listener);
+			card.addMouseListener(listener);
 	}
 	
-	public LinkedList<UNOCard> getCards(){
+	/*@ ensures \result == UNOcards;
+	  @*/
+	public /*@ pure @*/ LinkedList<UNOCard> getCards(){
 		return UNOcards;
 	}
 }
