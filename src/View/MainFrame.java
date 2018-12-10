@@ -12,12 +12,12 @@ import ServerController.Server;
 public class MainFrame extends JFrame implements GameConstants {
 
 	/*@initially mainPanel != null;
-	@ invariant mainPanel != null;
+	@ public invariant mainPanel != null;
 	@*/
 	private /*@ spec_public nullable @*/Session mainPanel;
 
 	/*@initially server != null;
-	@ invariant server != null;
+	@ public invariant server != null;
 	@*/
 	private /*@ spec_public nullable @*/Server server;
 	

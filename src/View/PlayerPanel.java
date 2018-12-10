@@ -95,7 +95,7 @@ public class PlayerPanel extends JPanel implements GameConstants {
 		setPlayerName(player.getName());
 	}
 
-	/*@ requires playername.size() >= 0;
+	/*@ requires playername != null;
 	@ requires player != null;
 	@ assignable name;
 	@ ensures name == playername;
