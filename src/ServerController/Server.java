@@ -29,6 +29,8 @@ public class Server implements GameConstants {
 	public boolean canPlay;
 	private /*@ spec_public nullable @*/int mode;
 
+	/*@ assignable game, mode, playedCards, session;
+	 @*/
 	public Server() {
 
 		mode = requestMode();
@@ -65,10 +67,15 @@ public class Server implements GameConstants {
 	}
 	
 	//coustom settings for the first card
-	/*@ requires firstCard.getType() == WILD;
-	 @ assignable \nothing;
-	 @ ensures \old(firstCard) == firstCard;
-	 @*/
+	/*@ 	requires firstCard.getType() == WILD;
+	 @ 	assignable \nothing;
+	 @ 	ensures \old(firstCard) == firstCard;
+	 @ also
+	 @ 	requires firstCard.getType() != WILD;
+	 @ 	assignable \nothing;
+	 @ 	ensures \old(firstCard) == firstCard;
+	 @	signals (Exception) true;
+	  @*/
 	private void modifyFirstCard(UNOCard firstCard) {
 		firstCard.removeMouseListener(CARDLISTENER);
 		if (firstCard.getType() == WILD) {
@@ -81,16 +88,20 @@ public class Server implements GameConstants {
 		}
 	}
 	
+	//return Main Panel
+
 	/*@ requires session != null;
 	 @ ensures \result == session;
 	 @*/
-	//return Main Panel
 	public Session getSession() {
 		return this.session;
 	}
 	
 	
 	//request to play a card
+	/*@ requires game != null;
+	 @ assignable playedCards, game, session;
+	 @*/
 	public void playThisCard(UNOCard clickedCard) {
 
 		// Check player's turn
@@ -151,9 +162,9 @@ public class Server implements GameConstants {
 	
 	//check player's turn
 	/*@ requires game != null;
-	  @ ensures \result == true <==> (\exists int i; 0 <= i && i < game.players.length;
-	  @ 	game.players[i].hasCard(clickedCard) && game.players[i].isMyTurn());
-	  @*/
+	 @ ensures \result == true <==> (\exists int i; 0 <= i && i < game.players.length;
+	 @ 	game.players[i].hasCard(clickedCard) && game.players[i].isMyTurn());
+	 @*/
 	public boolean isHisTurn(UNOCard clickedCard) {
 
 		for (Player p : game.getPlayers()) {
@@ -164,6 +175,10 @@ public class Server implements GameConstants {
 	}
 
 	//check if it is a valid card
+
+	/*@ requires playedCard != null;
+	@ assignable playedCard;
+ 	@*/
 	public boolean isValidMove(UNOCard playedCard) {
 		UNOCard topCard = peekTopCard();
 
@@ -183,6 +198,12 @@ public class Server implements GameConstants {
 	}
 
 	// ActionCards
+	/*@ 	requires game != null;
+	@ 	assignable game;
+	@ also
+	@ 	requires game != null;
+	@ 	assignable \nothing;
+	@*/
 	private void performAction(UNOCard actionCard) {
 
 		// Draw2PLUS

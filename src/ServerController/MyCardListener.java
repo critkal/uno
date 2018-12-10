@@ -18,6 +18,16 @@ public class MyCardListener extends MouseAdapter {
 		myServer = server;
 	}
 	
+	/*@ requires e != null;
+	 @ requires myServer != null;
+	 @ assignable sourceCard, myServer;
+	 @ ensures sourceCard != null;
+	 @ ensures myServer == \old(myServer);
+	 @also
+	 @ requires sourceCard == null;
+	 @ assignable \nothing;
+	 @ signals (NullPointerException) true;
+	 @*/
 	public void mousePressed(MouseEvent e) {		
 		sourceCard = (UNOCard) e.getSource();
 		
@@ -31,6 +41,12 @@ public class MyCardListener extends MouseAdapter {
 	}
 	
 	@Override
+	/*@ requires e != null;
+	 @ requires myServer != null;
+	 @ assignable sourceCard, myServer;
+	 @ ensures sourceCard != null;
+	 @ ensures myServer == \old(myServer);
+	 @*/
 	public void mouseEntered(MouseEvent e) {
 		super.mouseEntered(e);		
 		
@@ -41,6 +57,12 @@ public class MyCardListener extends MouseAdapter {
 	}
 
 	@Override
+	/*@requires e != null;
+	 @ requires myServer != null;
+	 @ assignable sourceCard, myServer;
+	 @ ensures sourceCard != null;
+	 @ ensures myServer == \old(myServer);
+	 @*/
 	public void mouseExited(MouseEvent e) {
 		sourceCard = (UNOCard) e.getSource();
 		Point p = sourceCard.getLocation();
@@ -49,6 +71,7 @@ public class MyCardListener extends MouseAdapter {
 	}	
 
 	@Override
+	//@ assignable \nothing;
 	public void mouseReleased(MouseEvent e) {
 		
 	}	
